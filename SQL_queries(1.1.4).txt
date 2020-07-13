@@ -1,0 +1,124 @@
+1. SELECT 
+producto.nombre As Producto_Nombre, 
+precio, 
+fabricante.nombre As Fabricante_Nombre FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+
+2. SELECT producto.nombre As Producto_Nombre, 
+precio,
+fabricante.nombre As Fabricante_Nombre
+FROM producto
+INNER JOIN fabricante
+    ON producto.codigo_fabricante = fabricante.codigo
+    Order by fabricante.nombre ASC
+
+3. SELECT 
+producto.codigo As Producto_Codigo,
+producto.nombre As Producto_Nombre,
+precio, 
+fabricante.codigo As Fabricante_Codigo,
+fabricante.nombre As Fabricante_Nombre
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+
+4. SELECT 
+producto.nombre As Producto_Nombre,
+precio, 
+fabricante.nombre As Fabricante_Nombre
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    order by producto.precio ASC limit 1
+
+5. SELECT 
+producto.nombre As Producto_Nombre,
+precio, 
+fabricante.nombre As Fabricante_Nombre
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    order by producto.precio DESC limit 1
+
+6. SELECT 
+producto.codigo,
+producto.nombre,
+producto.precio
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where fabricante.nombre like "lenovo"
+
+7. SELECT 
+producto.codigo,
+producto.nombre,
+producto.precio
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where fabricante.nombre like "crucial" and producto.precio > 200
+
+8. SELECT 
+producto.codigo,
+producto.nombre,
+producto.precio
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where fabricante.nombre like "Asus" or fabricante.nombre like "Seagate" or fabricante.nombre like "Hewlett-Packard" 
+
+9. SELECT 
+producto.codigo,
+producto.nombre,
+producto.precio
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where fabricante.nombre in("Asus","Seagate","Hewlett-Packard")
+
+10. SELECT 
+producto.nombre,
+producto.precio
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where right(fabricante.nombre, 1) like "e"
+
+11. SELECT 
+producto.nombre,
+producto.precio
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where fabricante.nombre like '%w%'
+
+12. SELECT 
+producto.nombre As producto_nombre,
+producto.precio,
+fabricante.nombre As fabricante_nombre
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where producto.precio >= 180
+    order by producto.precio DESC
+
+
+    SELECT 
+producto.nombre As producto_nombre,
+producto.precio,
+fabricante.nombre As fabricante_nombre
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where producto.precio >= 180
+    order by producto.nombre ASC
+
+13. SELECT 
+fabricante.codigo As fabricante_codigo,
+fabricante.nombre As fabricante_nombre
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+    where producto.codigo_fabricante = fabricante.codigo 
+    group by fabricante_codigo
