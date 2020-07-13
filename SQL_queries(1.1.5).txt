@@ -1,0 +1,24 @@
+1. SELECT 
+fabricante.codigo As fabricante_codigo,
+fabricante.nombre As fabricante_nombre,
+producto.nombre,
+producto.precio
+FROM fabricante
+left JOIN producto 
+    ON fabricante.codigo = producto.codigo_fabricante
+
+2. SELECT 
+fabricante.codigo As fabricante_codigo,
+fabricante.nombre As fabricante_nombre,
+producto.nombre As producto_nombre,
+producto.precio
+FROM fabricante
+left JOIN producto 
+    ON fabricante.codigo = producto.codigo_fabricante
+    where producto.nombre is null
+
+3. No es posible que exista un producto que no este relacionado a un fabricante, pues hay una
+relacion de uno( fabricante) a muchos( productos), la misma indica que un fabricante puede tener varios 
+productos, pero un producto siempre va a pertenecer a un fabricante. Ademas en el diagrama se ve 
+claramente que se ha creado una llave foranea en la tabla de productos, la cual siempre va a tener un 
+valor, que este seria el id de un fabricante.
