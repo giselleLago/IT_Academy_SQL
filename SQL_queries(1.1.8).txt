@@ -1,0 +1,7 @@
+****Revisar*****1. SELECT
+fabricante.nombre As Nombre_fabricante
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+having count(codigo_fabricante) = 2
