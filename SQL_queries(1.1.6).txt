@@ -1,0 +1,172 @@
+1. SELECT count(*) As Total From producto
+2. SELECT count(*) As Total From fabricante
+3. SELECT COUNT(distinct codigo_fabricante) AS Total FROM producto
+4. SELECT round(avg(precio), 2) AS Media_precio FROM producto
+5. SELECT min(precio) AS Menor_precio FROM producto
+6. SELECT max(precio) AS Mayor_precio FROM producto
+7. SELECT nombre, min(precio) AS Menor_precio FROM producto
+8. SELECT nombre, min(precio) AS Mayor_precio FROM producto
+9. SELECT sum(precio) AS Suma_precio FROM producto
+10. SELECT 
+count(precio) AS total_asus
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+where fabricante.nombre like "Asus"
+
+11. SELECT 
+avg(precio) AS Average_asus
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+where fabricante.nombre like "Asus"
+
+12. SELECT 
+min(precio) AS Menor_precio_asus
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+where fabricante.nombre like "Asus"
+
+13. SELECT 
+max(precio) AS Mayor_precio_asus
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+where fabricante.nombre like "Asus"
+
+14. SELECT 
+sum(precio) AS Suma_precio_asus
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+where fabricante.nombre like "Asus"
+
+15. SELECT
+max(precio) As Max_precio, 
+min(precio) As Min_precio,
+avg(precio) As Avg_precio,
+count(*) As Total_productos
+FROM producto
+INNER JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+where fabricante.nombre like "Crucial"
+
+16. SELECT
+fabricante.nombre,
+Count(producto.codigo_fabricante) As Total
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+order by count(producto.codigo_fabricante) DESC
+
+17. SELECT
+fabricante.nombre,
+max(precio) As Max_precio, 
+min(precio) As Min_precio,
+avg(precio) As Avg_precio
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+
+18. SELECT
+fabricante.codigo,
+max(precio) As Max_precio, 
+min(precio) As Min_precio,
+avg(precio) As Avg_precio,
+Count(producto.codigo_fabricante) As Total
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+having avg(precio) > 200
+
+19. SELECT
+fabricante.nombre,
+max(precio) As Max_precio, 
+min(precio) As Min_precio,
+avg(precio) As Avg_precio,
+Count(producto.codigo_fabricante) As Total
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+having avg(precio) > 200
+
+20. SELECT count(*) As Total From producto where precio >= 180
+21. SELECT
+fabricante.nombre As Nombre_fabricante,
+Count(producto.codigo_fabricante) As Total
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+where producto.precio >= 180
+group by fabricante.nombre
+
+22. SELECT
+fabricante.codigo As Codigo_fabricante,
+avg(precio) As Precio_medio
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+
+23. SELECT
+fabricante.nombre As Nombre_fabricante,
+avg(precio) As Precio_medio
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+
+24. SELECT
+fabricante.nombre As Nombre_fabricante
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+having avg(precio) >= 150
+
+25. SELECT
+fabricante.nombre As Nombre_fabricante
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+having count(codigo_fabricante) >= 2
+
+26. SELECT
+fabricante.nombre As Nombre_fabricante,
+Count(producto.codigo_fabricante) As Total
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+where precio >= 220
+group by fabricante.nombre
+
+****Revisar*****27. SELECT
+fabricante.nombre As Nombre_fabricante,
+IF ( precio >= 220, Count(producto.codigo_fabricante), if(count(fabricante.nombre) < 2 , 0, 999)) As Total
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+
+28. SELECT
+fabricante.nombre As Nombre_fabricante
+FROM fabricante
+left JOIN producto 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by fabricante.nombre
+having sum(precio) >= 1000
+
+29. SELECT
+producto.nombre As Nombre_producto,
+If (count(fabricante.nombre) >= 2 , max(precio), precio) As Precio_max,
+fabricante.nombre As Nombre_fabricante
+FROM producto
+left JOIN fabricante 
+    ON producto.codigo_fabricante = fabricante.codigo
+group by codigo_fabricante
